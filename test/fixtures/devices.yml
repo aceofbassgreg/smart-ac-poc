@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  serial_number: MyString
+  registration_date: 2018-10-28 17:08:57
+  firmware_version: MyString
+
+two:
+  serial_number: MyString
+  registration_date: 2018-10-28 17:08:57
+  firmware_version: MyString
