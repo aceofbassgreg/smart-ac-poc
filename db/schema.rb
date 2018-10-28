@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_28_210857) do
+ActiveRecord::Schema.define(version: 2018_10_28_213817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 2018_10_28_210857) do
     t.string "firmware_version", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sensor_readings", force: :cascade do |t|
+    t.integer "temperature"
+    t.decimal "carbon_monoxide_level"
+    t.decimal "air_humidity_percentage"
+    t.string "device_health"
+    t.bigint "device_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["device_id"], name: "index_sensor_readings_on_device_id"
   end
 
 end
