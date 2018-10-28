@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  warning_type: 
+  resolved: false
+  device: one
+
+two:
+  warning_type: 
+  resolved: false
+  device: two

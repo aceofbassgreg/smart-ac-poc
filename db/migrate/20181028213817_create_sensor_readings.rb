@@ -5,7 +5,7 @@ class CreateSensorReadings < ActiveRecord::Migration[5.2]
       t.decimal :carbon_monoxide_level
       t.decimal :air_humidity_percentage
       t.string :device_health
-      t.references :device
+      t.references :device, foreign_key: true
 
       t.timestamps
     end
