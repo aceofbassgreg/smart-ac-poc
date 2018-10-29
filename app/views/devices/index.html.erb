@@ -4,7 +4,10 @@
 
 <%= form_tag(devices_index_path, method: :get) do %>
   <div class="ui left floated header"> Search by Device Serial Number: </div> <div class="ui input"> <%= text_field_tag :serial_number %></div>
-  <%= submit_tag 'Search', class: 'ui center floated button' %> 
+  <%= submit_tag 'Search', class: 'ui center floated primary button' %> 
+  <button class="ui button">
+    <%= link_to 'View All Devices', { action: 'index'}, method: :get %>
+  </button>
 <% end %>
 <table class="ui celled table">
   <thead>
