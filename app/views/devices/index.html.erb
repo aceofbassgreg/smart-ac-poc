@@ -1,2 +1,17 @@
-<h1>Devices#index</h1>
-<p>Find me in app/views/devices/index.html.erb</p>
+<h2 class="ui-header">Devices</h2>
+<% @devices.each do |device| %>
+<table class="ui celled table">
+  <thead>
+    <tr><th>Serial Number</th>
+    <th>Registration Date</th>
+    <th>Firmware Version Number</th>
+  </tr></thead>
+  <tbody>
+    <tr>
+      <td data-label="Serial Number"><%= device.serial_number %></td>
+      <td data-label="Registration Date"><%= device.registration_date %></td>
+      <td data-label="Firmware Version Number"><%= device.firmware_version %></td>
+    </tr>
+  </tbody>
+</table>
+<% end %>
