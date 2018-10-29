@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_29_232843) do
+ActiveRecord::Schema.define(version: 2018_10_29_233136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "devices", force: :cascade do |t|
     t.string "serial_number", null: false
-    t.datetime "registration_date", null: false
+    t.datetime "registration_date", default: "2018-10-29 00:00:00", null: false
     t.string "firmware_version", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
