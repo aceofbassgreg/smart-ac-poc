@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_28_222618) do
+ActiveRecord::Schema.define(version: 2018_10_29_232843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2018_10_28_222618) do
     t.string "firmware_version", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["serial_number"], name: "index_devices_on_serial_number"
   end
 
   create_table "sensor_readings", force: :cascade do |t|
