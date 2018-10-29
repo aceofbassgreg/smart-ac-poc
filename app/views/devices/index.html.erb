@@ -1,17 +1,26 @@
-<h2 class="ui-header">Devices</h2>
-<% @devices.each do |device| %>
+<h1 class="ui-header"><b>Devices</b></h2>
+</br>
+</br>
+
+<%= form_tag(devices_index_path, method: :get) do %>
+  <div class="ui left floated header"> Search by Device Serial Number: </div> <div class="ui input"> <%= text_field_tag :serial_number %></div>
+  <%= submit_tag 'Search', class: 'ui center floated button' %> 
+<% end %>
 <table class="ui celled table">
   <thead>
-    <tr><th>Serial Number</th>
-    <th>Registration Date</th>
-    <th>Firmware Version Number</th>
-  </tr></thead>
+    <tr>
+      <th>Serial Number</th>
+      <th>Registration Date</th>
+      <th>Firmware Version Number</th>
+    </tr>
+  </thead>
   <tbody>
+    <% @devices.each do |device| %>
     <tr>
       <td data-label="Serial Number"><%= device.serial_number %></td>
       <td data-label="Registration Date"><%= device.registration_date %></td>
       <td data-label="Firmware Version Number"><%= device.firmware_version %></td>
     </tr>
+    <% end %>
   </tbody>
 </table>
-<% end %>
