@@ -3,8 +3,13 @@ Rails.application.routes.draw do
   get 'sensor_readings/index'
   get 'sensor_readings/show'
   devise_for :users
-  get 'devices/create'
-  get 'devices/show'
-  get 'devices/index'
+  resources :devices, only: [:index, :show]
   root 'devices#index'
+  namespace 'charts' do
+    namespace 'devices' do
+      get ':id/temperature', action: :show_temperature
+      get ':id/carbon_monoxide_level', action: :show_carbon_monoxide_level
+      get ':id/air_humidity_percentage', action: :show_air_humidity_percentage
+    end
+  end
 end
