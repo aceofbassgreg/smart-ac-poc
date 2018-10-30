@@ -2,7 +2,7 @@
 </br>
 </br>
 
-<%= form_tag(devices_index_path, method: :get) do %>
+<%= form_tag(devices_path, method: :get) do %>
   <div class="ui left floated header"> Search by Device Serial Number: </div> <div class="ui input"> <%= text_field_tag :serial_number %></div>
   <%= submit_tag 'Search', class: 'ui center floated primary button' %> 
   <button class="ui button">
@@ -21,7 +21,7 @@
   <tbody>
     <% @devices.each do |device| %>
     <tr>
-      <td data-label='Serial Number'><%= device.serial_number %></td>
+      <td data-label='Serial Number'><%= link_to device.serial_number, device_path(device.id) %></td>
       <td data-label='Registration Date'><%= device.registration_date %></td>
       <td data-label='Firmware Version Number'><%= device.firmware_version %></td>
       <td data-label='Sensor Readings'>
