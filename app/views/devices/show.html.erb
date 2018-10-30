@@ -1,2 +1,12 @@
-<h1>Devices#show</h1>
-<p>Find me in app/views/devices/show.html.erb</p>
+<h1><%=@device.serial_number%> Metrics</h1>
+
+<h3>Temperature</h3>
+<%= line_chart "../charts/devices/#{@device.id}/temperature" %>
+</br>
+</br>
+<h3>Carbon Monoxide Level</h3>
+<%= line_chart "../charts/devices/#{@device.id}/carbon_monoxide_level" %>
+</br>
+</br>
+<h3>Air Humidity Percentage</h3>
+<%= line_chart "../charts/devices/#{@device.id}/air_humidity_percentage" %>

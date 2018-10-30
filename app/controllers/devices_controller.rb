@@ -5,6 +5,7 @@ class DevicesController < ApplicationController
   end
 
   def show
+    @device = Device.find(params[:id])
   end
 
   def index
@@ -12,6 +13,6 @@ class DevicesController < ApplicationController
   end
 
   private def devices_params
-    params.require(:device).permit(:serial_number, :registration_date, :firmware_version, :search)
+    params.require(:device).permit(:id, :serial_number, :registration_date, :firmware_version, :search)
   end
 end
