@@ -8,7 +8,7 @@ class DevicesController < ApplicationController
   end
 
   def index
-    @devices = Device.search(params[:serial_number])
+    @devices = Device.search(params[:serial_number]).sort_by(&:registration_date).reverse
   end
 
   private def devices_params
