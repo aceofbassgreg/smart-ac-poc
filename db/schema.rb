@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_29_233136) do
+ActiveRecord::Schema.define(version: 2018_10_30_014236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2018_10_29_233136) do
     t.bigint "device_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "time_recorded"
     t.index ["device_id"], name: "index_sensor_readings_on_device_id"
   end
 

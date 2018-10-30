@@ -5,6 +5,7 @@
 <table class="ui celled table">
   <thead>
     <tr>
+      <th>Time Recorded</th>
       <th>Temperature</th>
       <th>Carbon Monoxide Level</th>
       <th>Air Humidity Percentage</th>
@@ -14,6 +15,7 @@
   <tbody>
     <% @sensor_readings.each do |sensor| %>
     <tr>
+      <td data-label='Time Recorded'><%= sensor.time_recorded %></td>
       <td data-label='Temperature'><%= sensor.temperature %></td>
       <td data-label='Carbon Monoxide Level'><%= sensor.carbon_monoxide_level %></td>
       <td data-label='Air Humidity Percentage'><%= sensor.air_humidity_percentage %></td>
