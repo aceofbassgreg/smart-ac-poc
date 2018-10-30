@@ -24,7 +24,9 @@
       <td data-label='Serial Number'><%= device.serial_number %></td>
       <td data-label='Registration Date'><%= device.registration_date %></td>
       <td data-label='Firmware Version Number'><%= device.firmware_version %></td>
-      <td data-label='Sensor Readings'><%= link_to 'Sensor Readings', { action: 'index', controller: 'sensor_readings' }, method: :get %></td>
+      <td data-label='Sensor Readings'>
+        <%= link_to 'Sensor Readings', sensor_readings_index_path(device_id: device.id) %>
+      </td>
     </tr>
     <% end %>
   </tbody>
