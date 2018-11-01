@@ -6,6 +6,11 @@ module Api
       def create
         device = Device.create(device_params)
         render json: device, status: 200
+      rescue ActiveRecord::NotNullViolation => e
+        details = e.message.gsub('PG::NotNullViolation: ERROR:  ','').gsub(/\n.+/,'')
+        render json: {'reason': 'required field omitted', 'details': details}, status: 400
+      rescue ActiveRecord::RecordNotUnique
+        render json: {'reason': "serial number #{device_params[:serial_number]} is already registered", 'details': ''}, status: 400
       end
 
       def device_params
