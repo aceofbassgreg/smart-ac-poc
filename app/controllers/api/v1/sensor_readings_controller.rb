@@ -38,7 +38,7 @@ module Api
 
       private def sensor_reading_params
         params.require('sensor_reading').permit(
-          :carbon_monoxide_level, :air_humidity_percentage, :temperature, :device_health, 
+          :carbon_monoxide_level, :air_humidity_percentage, :temperature, :device_health, :time_recorded,
           [device_attributes: [:serial_number]]
         ).tap { |sensor_params| sensor_params.require(:device_attributes) }
       end
