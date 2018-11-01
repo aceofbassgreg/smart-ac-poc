@@ -5,15 +5,13 @@ module Api
 
 
       rescue_from(ActionController::ParameterMissing) do |parameter_missing_exception|
-        response = { reason: 'required parameter omitted', 'details': 'payload must include: {"device_attributes": {"serial_number": "SERIAL_NUMBER"}}' }
+        response = { reason: 'required parameter omitted', 'details': 'payload must include: {"device_attributes": {"serial_number": "SERIAL_NUMBER"}} and must have ANY of the following keys:  tmeperature, carbon_monoxide_level, device_health, air_humidity_percentage. No other parameteres  are permitted' }
         respond_to do |format|
           format.json { render json: response, status: :unprocessable_entity }
         end
       end
 
       def create
-        # unless sensor_reading_params.dig(:device_attributes)
-        #   render json: {'reason': 'missing "device_attributes" key', 'details': 'you must specify "device_attributes" that points to object {"serial_number": SERIAL_NUMBER_HERE}'}, status: 400
         unless (device_attrs.dig(:carbon_monoxide_level) || 
           device_attrs.dig(:air_humidity_percentage) || 
           device_attrs.dig(:temperature) || 
