@@ -12,4 +12,10 @@ Rails.application.routes.draw do
       get ':id/air_humidity_percentage', action: :show_air_humidity_percentage
     end
   end
+
+  namespace 'api' do
+    namespace 'v1' do
+      resources :devices, only: [:create]
+    end
+  end
 end
