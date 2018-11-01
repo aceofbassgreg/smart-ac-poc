@@ -24,9 +24,6 @@ module Api
         end
         sensor_reading = SensorReading.create(device_attrs.merge(device_id: device.id))
         render json: sensor_reading, status: 200
-      rescue ActionController::ParameterMissing => e
-        msg = e.match(/\(.+\)/).to_s.gsub(/[\(\)]/,'')
-        render json: {'reason': msg, 'details': 'payload should include: {"device_attributes": {"serial_number": "SERIAL_NUMBER"}}'}, status: 400
       end
 
       private def device_attrs
