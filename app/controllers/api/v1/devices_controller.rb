@@ -8,9 +8,9 @@ module Api
         render json: device, status: 200
       rescue ActiveRecord::NotNullViolation => e
         details = e.message.gsub('PG::NotNullViolation: ERROR:  ','').gsub(/\n.+/,'')
-        render json: {'reason': 'required field omitted', 'details': details}, status: 400
+        render json: {'reason': 'required field omitted', 'details': details}, status: 422
       rescue ActiveRecord::RecordNotUnique
-        render json: {'reason': "serial number #{device_params[:serial_number]} is already registered", 'details': ''}, status: 400
+        render json: {'reason': "serial number #{device_params[:serial_number]} is already registered", 'details': ''}, status: 422
       end
 
       def device_params
