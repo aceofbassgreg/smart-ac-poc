@@ -3,6 +3,13 @@ module Api
     class DevicesController < ApplicationController
       skip_before_action :verify_authenticity_token
 
+      rescue_from(ActionController::ParameterMissing) do |parameter_missing_exception|
+        response = { reason: 'required parameter omitted', 'details': 'payload must include "serial_number"' }
+        respond_to do |format|
+          format.json { render json: response, status: :unprocessable_entity }
+        end
+      end
+
       def create
         device = Device.create(device_params)
         render json: device, status: 200
@@ -14,7 +21,9 @@ module Api
       end
 
       def device_params
-        params.require('device').permit(:serial_number, :firmware_version)
+        params.require('device').permit(:serial_number, :firmware_version).tap do |device_attrs|
+          device_attrs.require(:serial_number)
+        end
       end
     end
   end
