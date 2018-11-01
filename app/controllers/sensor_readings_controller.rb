@@ -7,7 +7,7 @@ class SensorReadingsController < ApplicationController
   def index
     device_id = params[:device_id]
     @device = Device.find(device_id)
-    @sensor_readings = SensorReading.search(params[:device_id]).sort_by(&:time_recorded).reverse
+    @sensor_readings = SensorReading.search(params[:device_id])
   end
 
   def show
