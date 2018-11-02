@@ -2,7 +2,7 @@ module Api
   module V2
     class BatchSensorReadingsController < ApplicationController
 
-      include Authenticator
+      include Helpers::Authenticator
       include Helpers::SensorReadingBuilder
 
       skip_before_action :verify_authenticity_token
