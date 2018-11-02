@@ -3,6 +3,7 @@ module Api
     class BatchSensorReadingsController < ApplicationController
 
       include Authenticator
+      include Helpers::SensorReadingBuilder
 
       skip_before_action :verify_authenticity_token
       before_action :authenticate_api_user
@@ -16,14 +17,18 @@ module Api
 
       def create
         batch_sensor_reading_params.each do |sensor_reading|
-          puts 'hello world'
-          puts sensor_reading
+          build_sensor_reading_and_handle_response(sensor_reading)
         end
+        puts batch_sensor_reading_params.count
         render json: {'foo': 'ok'}, status: 200
       end
 
       private def batch_sensor_reading_params
-        params.require('sensor_readings')
+        params.require('sensor_readings').map do |p|
+          p.permit(
+            :temperature, :carbon_monoxide_level, :device_health, :air_humidity_percentage
+            )
+        end
       end
     end
   end

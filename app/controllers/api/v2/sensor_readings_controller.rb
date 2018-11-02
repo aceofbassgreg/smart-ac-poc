@@ -3,6 +3,7 @@ module Api
     class SensorReadingsController < ApplicationController
 
       include Authenticator
+      include Helpers::SensorReadingBuilder
 
       skip_before_action :verify_authenticity_token
       before_action :authenticate_api_user
