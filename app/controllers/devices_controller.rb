@@ -1,9 +1,6 @@
 class DevicesController < ApplicationController
   before_action :authenticate_user!
 
-  def create
-  end
-
   def show
     @device = Device.find(params[:id])
   end
