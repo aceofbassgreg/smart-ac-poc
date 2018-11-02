@@ -8,7 +8,7 @@ module Api
       before_action :authenticate_api_user
 
       rescue_from(ActionController::ParameterMissing) do |parameter_missing_exception|
-        response = { reason: 'required parameter omitted', 'details': 'payload must include: {"device_attributes": {"serial_number": "SERIAL_NUMBER"}} and must have ANY of the following keys:  tmeperature, carbon_monoxide_level, device_health, air_humidity_percentage. No other parameteres  are permitted' }
+        response = { reason: 'required parameter omitted', 'details': 'payload must have ANY of the following keys:  tmeperature, carbon_monoxide_level, device_health, air_humidity_percentage. No other parameteres  are permitted' }
         respond_to do |format|
           format.json { render json: response, status: :unprocessable_entity }
         end
