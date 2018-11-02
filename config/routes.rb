@@ -19,4 +19,11 @@ Rails.application.routes.draw do
       resources :sensor_readings, only: [:create]
     end
   end
+
+  namespace 'api' do
+    namespace 'v2' do
+      resources :devices, only: [:create]
+      resources :sensor_readings, only: [:create]
+    end
+  end
 end
