@@ -16,15 +16,20 @@ module Api
       end
 
       def create
+        errors = []
         batch_sensor_reading_params.each do |sensor_reading|
           if build_sensor_reading_and_handle_response(sensor_reading)
             next
           else
-            render json: {'reason': 'no sensor data sent', 'details': ''}, status: 400
-            return
+            errors << sensor_reading
           end
         end
-        render json: {'records_created': batch_sensor_reading_params.count}, status: 200
+
+        if errors.empty?
+          render json: {'records_created': batch_sensor_reading_params.count}, status: 200
+        else
+          render json: {'reason': 'invalid sensor_readings sent', 'details': errors}, status: 200
+        end
       end
 
       private def batch_sensor_reading_params
