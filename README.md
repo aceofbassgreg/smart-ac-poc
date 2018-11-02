@@ -1,24 +1,7 @@
-# README
+# Smart AC POC
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app has two components:  an API that allows users to register devices and
+POST readings from the air conditioner sensors, as well as an admin dashboard
+that allows users to search for devices by serial number as well as view a
+device's sensor activity and chart the activity over time.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
