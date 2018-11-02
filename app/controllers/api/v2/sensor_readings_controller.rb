@@ -15,7 +15,6 @@ module Api
 
       def create
         if build_sensor_reading_and_handle_response(sensor_reading_params)
-          sensor_reading = SensorReading.create(sensor_reading_params.merge(device_id: device.id))
           render json: sensor_reading, status: 200
           return
         else
