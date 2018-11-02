@@ -20,7 +20,7 @@ module Api
           build_sensor_reading_and_handle_response(sensor_reading)
         end
         puts batch_sensor_reading_params.count
-        render json: {'foo': 'ok'}, status: 200
+        render json: {'records_created': batch_sensor_reading_params.count}, status: 200
       end
 
       private def batch_sensor_reading_params
