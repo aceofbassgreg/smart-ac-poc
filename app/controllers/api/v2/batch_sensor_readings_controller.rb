@@ -17,9 +17,13 @@ module Api
 
       def create
         batch_sensor_reading_params.each do |sensor_reading|
-          build_sensor_reading_and_handle_response(sensor_reading)
+          if build_sensor_reading_and_handle_response(sensor_reading)
+            next
+          else
+            render json: {'reason': 'no sensor data sent', 'details': ''}, status: 400
+            return
+          end
         end
-        puts batch_sensor_reading_params.count
         render json: {'records_created': batch_sensor_reading_params.count}, status: 200
       end
 
@@ -27,7 +31,7 @@ module Api
         params.require('sensor_readings').map do |p|
           p.permit(
             :temperature, :carbon_monoxide_level, :device_health, :air_humidity_percentage
-            )
+          )
         end
       end
     end

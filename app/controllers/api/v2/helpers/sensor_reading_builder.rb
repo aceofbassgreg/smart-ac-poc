@@ -4,18 +4,12 @@ module Api
       module SensorReadingBuilder
 
         def build_sensor_reading_and_handle_response(parameters)
-          unless (parameters.dig(:carbon_monoxide_level) || 
+          return false unless (parameters.dig(:carbon_monoxide_level) || 
             parameters.dig(:air_humidity_percentage) || 
             parameters.dig(:temperature) || 
             parameters.dig(:system_health)
           )
-            render json: {'reason': 'no sensor data sent', 'details': ''}, status: 400
-            return
-          end
-          puts 'before'
-          puts "device_id:  #{device.id}" 
           sensor_reading = SensorReading.create(parameters.merge(device_id: device.id))
-          puts 'after'
         end
 
         def device
