@@ -1,7 +1,7 @@
 require 'securerandom'
 
 module Api
-  module V1
+  module V2
     class DevicesController < ApplicationController
       skip_before_action :verify_authenticity_token
 
