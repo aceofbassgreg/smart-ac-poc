@@ -9,7 +9,7 @@ module Api
             parameters.dig(:temperature) || 
             parameters.dig(:system_health)
           )
-          sensor_reading = SensorReading.create(parameters.merge(device_id: device.id))
+          SensorReading.create(parameters.merge(device_id: device.id))
         end
 
         def device

@@ -14,8 +14,8 @@ module Api
       end
 
       def create
-        if build_sensor_reading_and_handle_response(sensor_reading_params)
-          render json: sensor_reading, status: 200
+        if sensor_reading = build_sensor_reading_and_handle_response(sensor_reading_params)
+          render json: {sensor_reading}, status: 200
           return
         else
           render json: {'reason': 'no sensor data sent', 'details': ''}, status: 400
