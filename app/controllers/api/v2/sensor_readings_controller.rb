@@ -8,10 +8,9 @@ module Api
       skip_before_action :verify_authenticity_token
       before_action :authenticate_api_user
 
-        response = { reason: 'required parameter omitted', 'details': 'payload must have top-level "sensor_reading" key' }
-        respond_to do |format|
-          format.json { render json: response, status: :unprocessable_entity }
-        end
+      response = { reason: 'required parameter omitted', 'details': 'payload must have top-level "sensor_reading" key' }
+      respond_to do |format|
+        format.json { render json: response, status: :unprocessable_entity }
       end
 
       def create
