@@ -1,5 +1,3 @@
-require 'securerandom'
-
 module Api
   module V1
     class DevicesController < ApplicationController
@@ -13,12 +11,8 @@ module Api
       end
 
       def create
-        serial_number = device_params[:serial_number]
-        # Make fake email account so we can register device as user, return token upon registration
-        # TODO:  maybe email would have some value? maybe we can return email password to device as well?
-        user = User.create(email: "#{serial_number}@smart_ac_company.com", password: SecureRandom.hex)
         device = Device.create(device_params)
-        render json: user.api_authentication_key, status: 200
+        render json: device, status: 200
       rescue ActiveRecord::RecordNotUnique
         render json: {'reason': "serial number #{device_params[:serial_number]} is already registered", 'details': ''}, status: 422
       end
