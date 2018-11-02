@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     namespace 'v2' do
       resources :devices, only: [:create]
       resources :sensor_readings, only: [:create]
+      resources :batch_sensor_readings, only: [:create]
     end
   end
 end
